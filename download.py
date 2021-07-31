@@ -21,7 +21,10 @@ def download_url(url, output_path):
                                 miniters=1, desc=output_path) as t:
         urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)
 
-# download_url(URL, FILE_NAME)
+if os.path.exists(FILE_NAME):
+    print("Already Downloaded !")
+else:
+    download_url(URL, FILE_NAME)
 
 print('Extracting Zip File ...')
 shutil.unpack_archive(FILE_NAME, FILE_NAME.split(".")[0])
